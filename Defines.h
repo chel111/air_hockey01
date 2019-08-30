@@ -1,0 +1,22 @@
+#pragma once
+#ifndef RIGHT_BORDER
+#define RIGHT_BORDER 460
+#define LEFT_BORDER 135
+#define TOP_BORDER 40
+#define BOTTOM_BORDER 705
+
+#define MIDDLE_OF_FIELD_OY 370
+#define MIDDLE_OF_FIELD_OX 300
+
+
+#define MAX_LEVEL_BOT 10
+#define ACCELERATION -0.02
+
+#define PLAYER_GOAL 100
+#define AI_GOAL 101
+#define LEFT_CROSSBAR 240
+#define RIGHT_CROSSBAR 350
+
+#endif // !RIGHT_BORDER
+
+
