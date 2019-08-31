@@ -21,7 +21,7 @@ void Game_Manager::initObjects(SDL_Renderer* renderer)
 
 
 	AI_mallet->changeX(MIDDLE_OF_FIELD_OX);
-	AI_mallet->changeY(MIDDLE_OF_FIELD_OY / 5);
+	AI_mallet->changeY(DEFEND_ZONE);
 
 	puck->changeX(MIDDLE_OF_FIELD_OX);
 	

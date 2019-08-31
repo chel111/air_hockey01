@@ -5,6 +5,8 @@
 #include "PhysicEngine.h"
 #include "AI.h"
 #include "Sound_Manager.h"
+#include "Puck.h"
+#include "Mallet.h"
 
 
 class App

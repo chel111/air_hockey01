@@ -1,5 +1,7 @@
 #include "PhysicEngine.h"
 #include "Sound_Manager.h"
+#include "Puck.h"
+#include "Mallet.h"
 #include <cmath>
 
 
@@ -75,14 +77,15 @@ void PhysicEngine::handleBorderCollision(Game_Manager &gm, int _BORDER)		//handl
 
 Object* PhysicEngine::checkMalletCollision(Game_Manager& game_Manager)		//Check if the puck has collided with one of mallets
 {
-	Object* puck = game_Manager.getPuck(), *playerMallet = game_Manager.getPlayerMallet(), *AIMallet = game_Manager.getAIMallet();
+	Puck* puck = (Puck*)game_Manager.getPuck();
+	Mallet *playerMallet = (Mallet*)game_Manager.getPlayerMallet(), * AIMallet = (Mallet*)game_Manager.getAIMallet();
 	double malletRadius = playerMallet->getTexture().getWidth() / 2.0, puckRadius = puck->getTexture().getWidth() / 2.0;
 
 	//playerMallet & puck
 	double puckPlayerDistance = sqrt(pow((puck->getX() - playerMallet->getX()), 2) + pow((puck->getY() - playerMallet->getY()), 2));
 	if (puckPlayerDistance <= puckRadius + malletRadius)
 	{
-		//puck->correctionToMallet(playerMallet);
+		puck->correctionToMallet(playerMallet);
 		return playerMallet;
 	}
 
@@ -167,7 +170,7 @@ void PhysicEngine::handleMalletCollision(Object* puck, Object* mallet)			//handl
 		OOy = puck->getY() - mallet->getY();
 	
 	//puck V = prejection mallet V on OO
-	double puckVx = getProjection(mallet->getVx(), mallet->getVy(), OOx, OOy);
+	double puckVx = getProjection(mallet->getVx(), mallet->getVy(), OOx, OOy) + getProjection(puck->getVx(), puck->getVy(), OOx, OOy);
 	double OOLength = sqrt(pow(OOx, 2) + pow(OOy, 2));
 
 

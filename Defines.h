@@ -8,6 +8,7 @@
 #define MIDDLE_OF_FIELD_OY 370
 #define MIDDLE_OF_FIELD_OX 300
 
+#define DEFEND_ZONE 150
 
 #define MAX_LEVEL_BOT 10
 #define ACCELERATION -0.02

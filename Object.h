@@ -4,7 +4,7 @@
 
 class Object
 {
-private:
+protected:
 	Texture texture;
 	int x, y;
 	double Vx, Vy;

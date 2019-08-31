@@ -3,10 +3,13 @@
 void App::onLoop()
 {
 	SDL_Event e;
-	int borderCollision = 0, xPrev = 0, yPrev = 0, skipIteration = 0;
+	int borderCollision = 0, xPrev = 0, yPrev = 0, skipIteration = 0, botLevet = 5;
 	Object* malletCollision = nullptr;
 
 	sound_manager.playMusic();
+
+	//Previous coordinates of player mallet
+	//Handle events on queue
 	while (running)
 	{
 		if (skipIteration)
@@ -33,7 +36,7 @@ void App::onLoop()
 
 		}
 
-		AI::setAIVelocity(game_manager.getAIMallet(), game_manager.getPuck(), 1);
+		AI::setAIVelocity(game_manager.getAIMallet(), game_manager.getPuck(), botLevet);
 		malletCollision = PhysicEngine::checkMalletCollision(game_manager);
 		
 		game_manager.setPlayerMalletVelocity(xPrev, yPrev);
@@ -41,7 +44,7 @@ void App::onLoop()
 		{
 			PhysicEngine::handleMalletCollision(game_manager.getPuck(), malletCollision);
 			sound_manager.playPuckMalletCollisionSound();
-			//skipIteration = 2;	/////
+			skipIteration = 1;	/////
 
 			std::cout << " MALLET COLLISION" << std::endl;
 			if (borderCollision && malletCollision == game_manager.getPlayerMallet())
@@ -56,12 +59,8 @@ void App::onLoop()
 		game_manager.onLoop();
 
 
-
-
 		onRender();
-
-		//Previous coordinates of player mallet
-		//Handle events on queue
+		
 
 		xPrev = game_manager.getPlayerMallet()->getX();
 		yPrev = game_manager.getPlayerMallet()->getY();

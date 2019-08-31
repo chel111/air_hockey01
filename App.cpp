@@ -1,6 +1,6 @@
 #include "App.h"
 
-App::App() : game_manager(new Object, new Object, new Object)
+App::App() : game_manager(new Puck, new Mallet, new Mallet)
 {
 	running = true;
 	window = nullptr;
