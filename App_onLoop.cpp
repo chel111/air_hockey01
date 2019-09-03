@@ -3,7 +3,7 @@
 void App::onLoop()
 {
 	SDL_Event e;
-	int borderCollision = 0, xPrev = 0, yPrev = 0, skipIteration = 0, botLevet = 5;
+	int borderCollision = 0, xPrev = 0, yPrev = 0, skipIteration = 0, botLevet = 2;
 	Object* malletCollision = nullptr;
 
 	sound_manager.playMusic();

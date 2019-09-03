@@ -55,21 +55,21 @@ void PhysicEngine::handleBorderCollision(Game_Manager &gm, int _BORDER)		//handl
 		case PLAYER_GOAL:
 		{
 			gm.incPlayerScore();
-			puck->setX(MIDDLE_OF_FIELD_OX - puck->getTexture().getWidth() / 2);
-			puck->setY(MIDDLE_OF_FIELD_OY - puck->getTexture().getHeight() / 2);
+			puck->setX(MIDDLE_OF_FIELD_OX);
+			puck->setY(MIDDLE_OF_FIELD_OY);
 			puck->setVx(0);
 			puck->setVy(0);
-			gm.getAIMallet()->setY(80);
+			gm.getAIMallet()->setY(DEFEND_ZONE);
 			break;
 		}
 		case AI_GOAL:
 		{
 			gm.incAIScore();
-			puck->setX(MIDDLE_OF_FIELD_OX - puck->getTexture().getWidth() / 2);
-			puck->setY(MIDDLE_OF_FIELD_OY - puck->getTexture().getHeight() / 2);
+			puck->setX(MIDDLE_OF_FIELD_OX);
+			puck->setY(MIDDLE_OF_FIELD_OY);
 			puck->setVx(0);
 			puck->setVy(0);
-			gm.getAIMallet()->setY(80);
+			gm.getAIMallet()->setY(DEFEND_ZONE);
 			break;
 		}
 	}
@@ -93,7 +93,7 @@ Object* PhysicEngine::checkMalletCollision(Game_Manager& game_Manager)		//Check 
 	double puckAIDistance = sqrt(pow((puck->getX() - AIMallet->getX()), 2) + pow((puck->getY() - AIMallet->getY()), 2));
 	if (puckAIDistance <= puckRadius + malletRadius)
 	{
-		//puck->correctionToMallet(AIMallet);
+		puck->correctionToMallet(AIMallet);
 		return AIMallet;
 	}
 

@@ -18,8 +18,7 @@ void App::onEvent(SDL_Event* e)
 
 		game_manager.setPlayerMalletCoordinates(x, y);
 
-		std::cout << std::setw(5) << x << std::endl;
-			//<< std::setw(5) << y << std::setw(5) << game_manager.getPuck()->getX() << game_manager.getPuck()->getY() << std::endl;
+		//std::cout << std::setw(5) << x << std::setw(5) << y << std::setw(5) << game_manager.getPuck()->getVx() << game_manager.getPuck()->getVy() << std::endl;
 
 	}
 		default:
